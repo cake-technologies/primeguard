@@ -1,0 +1,25 @@
+{
+  "name": "primeguard",
+  "version": "0.0.1",
+  "description": "A resource based access control mechanism for rest apis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cake-technologies/primeguard.git"
+  },
+  "keywords": [
+    "prime",
+    "primenumber",
+    "rest",
+    "access"
+  ],
+  "author": "Martin Kastner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cake-technologies/primeguard/issues"
+  },
+  "homepage": "https://github.com/cake-technologies/primeguard#readme"
+}
