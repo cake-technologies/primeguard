@@ -1,13 +1,24 @@
 var crypto = require('crypto');
-let aws    = require('aws-sdk');
-let util   = aws.util;
 
 module.exports = {
   sanitizeString: str => str,
 
-  encB64: text => Buffer.from(JSON.stringify(text)).toString('base64'),
+  encB64: data => {
+    if (typeof data !== "string" )
+      data = JSON.stringify(data);
 
-  decB64: text => JSON.parse(util.base64.decode(text).toString('utf8')),
+    return Buffer.from(data).toString('base64');;
+  },
+
+  decB64: data => {
+    var res = new Buffer.from(data, 'base64').toString('utf8');
+    try {
+      res = JSON.parse(res);
+    } catch (e) {
+      // thing was only a string before
+    }
+    return res;
+  },
 
   encrypt: (text, algorithm, secret) => {
     var cipher = crypto.createCipher(algorithm, secret)

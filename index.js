@@ -22,5 +22,4 @@ module.exports = {
   extractIdToken: utils.extractIdToken,
 
   checkPermissions: checkPermissions
-
 }
