@@ -13,13 +13,17 @@ let checkPermissions = (header, action, rights, resource) => {
   }
 }
 
+let extractIdToken = data => {
+ return JSON.parse( utils.decB64( data.header.Authorization.split('.')[1] ).toString('utf8') );
+}
+
 module.exports = {
   sanitizeString: utils.sanitizeString,
   encB64: utils.encB64,
   decB64: utils.decB64,
   encrypt: utils.encrypt,
   decrypt: utils.decrypt,
-  extractIdToken: utils.extractIdToken,
 
+  extractIdToken: extractIdToken,
   checkPermissions: checkPermissions
 }
