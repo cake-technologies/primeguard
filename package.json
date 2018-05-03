@@ -1,6 +1,6 @@
 {
   "name": "primeguard",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A resource based access control mechanism for rest apis.",
   "main": "index.js",
   "scripts": {
