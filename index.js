@@ -14,7 +14,7 @@ let checkPermissions = (header, action, rights, resource) => {
 }
 
 let extractIdToken = data => {
- return JSON.parse( utils.decB64( data.header.Authorization.split('.')[1] ).toString('utf8') );
+ return JSON.parse( utils.decB64( data.header.Authorization.split('.')[1] ) );
 }
 
 module.exports = {
