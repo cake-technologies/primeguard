@@ -38,6 +38,9 @@ module.exports = {
   decB64: utils.decB64,
   encrypt: utils.encrypt,
   decrypt: utils.decrypt,
+  
+  requestAndThen: utils.requestAndThen,
+  getStage: utils.getStage,
 
   extractIdToken: extractIdToken,
   checkPermissions: checkPermissions,
