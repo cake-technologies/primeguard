@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+const request = require('then-request');
 
 module.exports = {
   sanitizeString: str => str,
@@ -32,5 +33,22 @@ module.exports = {
     var dec = decipher.update(text,'hex','utf8')
     dec += decipher.final('utf8');
     return dec;
+  },
+
+  getStage: (ev) => {
+    let stages = {
+      dev: '.dev',
+      test: '.test',
+      prod: ''
+    };
+    return stages[ev.context.stage] || '';
+  },
+
+  // suid must be created before the object itself is persisted
+  requestAndThen: function (url, data, event, ctx, andThen) {
+    request('POST', url, data).getBody('utf8').then(JSON.parse).done((reqResult) => {
+      andThen(event, ctx, data, reqResult);
+    });
   }
+
 };

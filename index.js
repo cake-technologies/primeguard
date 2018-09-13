@@ -15,6 +15,23 @@ let checkPermissions = (header, action, rights, resource) => {
 
 let extractIdToken = data => utils.decB64( data.header.Authorization.split('.')[1] )
 
+
+let buildMeta = (event, data, suid) => {
+  let userId   = extractIdToken(event.params).sub;
+  let tenant   = data.headers['x-sam-t'];
+  let creator  = userId;
+  let editor   = userId;
+
+  let thing = event.body;
+
+  thing.creator  = creator;
+  thing.editor   = editor;
+  thing.tenant   = tenant;
+  thing.suid     = suid;
+
+  return thing;
+}
+
 module.exports = {
   sanitizeString: utils.sanitizeString,
   encB64: utils.encB64,
@@ -23,5 +40,6 @@ module.exports = {
   decrypt: utils.decrypt,
 
   extractIdToken: extractIdToken,
-  checkPermissions: checkPermissions
+  checkPermissions: checkPermissions,
+  buildMeta: buildMeta
 }
