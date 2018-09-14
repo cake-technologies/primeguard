@@ -45,9 +45,15 @@ module.exports = {
   },
 
   // suid must be created before the object itself is persisted
-  requestAndThen: function (url, data, event, ctx, andThen) {
+  requestAndThen: function (url, data, event, ctx, andThen, callback) {
     request('POST', url, data).getBody('utf8').then(JSON.parse).done((reqResult) => {
-      andThen(event, ctx, data, reqResult);
+      andThen(event, ctx, data, reqResult, callback);
+    });
+  },
+
+  thenPATCH: function (url, data, event, ctx, callback) {
+    request('PATCH', url, data).getBody('utf8').then(JSON.parse).done((patchRes) => {
+      andThen(event, ctx, data, patchRes, callback);
     });
   }
 

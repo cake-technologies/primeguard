@@ -40,6 +40,7 @@ module.exports = {
   decrypt: utils.decrypt,
   
   requestAndThen: utils.requestAndThen,
+  thenPATCH: utils.thenPATCH,
   getStage: utils.getStage,
 
   extractIdToken: extractIdToken,
